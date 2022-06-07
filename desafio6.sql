@@ -1,10 +1,11 @@
 SELECT 
-ROUND(MIN(valor_plano), 2) AS faturamento_minimo, 
-ROUND(MAX(valor_plano), 2) AS faturamento_maximo, 
-ROUND(AVG(valor_plano), 2) AS faturamento_medio, 
-ROUND(SUM(valor_plano), 2) AS faturamento_total 
-FROM SpotifyClone.plans 
-JOIN SpotifyClone.user ON id_plans = user.id_plans; 
+  MIN(plans.value) AS faturamento_minimo, 
+  MAX(plans.value) AS faturamento_maximo, 
+  ROUND(AVG(plans.value), 2) AS faturamento_medio, 
+  SUM(plans.value) AS faturamento_total 
+FROM 
+  plans 
+JOIN user ON plans.id = user.plan_id; 
 
 
 
